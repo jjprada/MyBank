@@ -7,6 +7,6 @@
     <string name="amount">Please enter an amount</string>
     <string name="withdraw">Withdraw</string>
     <string name="deposit">Deposit</string>
-    <string name="balance">Your Account'\s Balance</string>
+    <string name="balance">Your Account\'s Balance</string>
 
 </resources>

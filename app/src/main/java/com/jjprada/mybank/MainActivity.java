@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,14 +16,37 @@ public class MainActivity extends ActionBarActivity {
     Button withdrawButton;
     Button depositButton;
     TextView balanceDisplay;
+    BankAccount currentAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        currentAccount = new BankAccount();
+
+        amountInput = (EditText)(findViewById(R.id.amount_input));
+        withdrawButton = (Button)(findViewById(R.id.withdraw_button));
+        depositButton = (Button)(findViewById(R.id.deposit_button));
         balanceDisplay = (TextView)(findViewById(R.id.balance_display));
-        balanceDisplay.setText("Hello World!");
+
+        withdrawButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String amount = amountInput.getText().toString();
+                currentAccount.withdraw(Double.parseDouble(amount));
+                balanceDisplay.setText("Balance is " + currentAccount.getBalance());
+            }
+        });
+
+        depositButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String amount = amountInput.getText().toString();
+                currentAccount.deposit(Double.parseDouble(amount));
+                balanceDisplay.setText("Balance is " + currentAccount.getBalance());
+            }
+        });
     }
 
 

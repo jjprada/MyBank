@@ -14,56 +14,54 @@ import android.widget.TextView;
 public class MainActivity extends ActionBarActivity {
 
     private static final String TAG = "MainActivity";
-    EditText amountInput;
-    Button withdrawButton;
-    Button depositButton;
-    TextView balanceDisplay;
-    BankAccount currentAccount;
-    BankAccount currentAccount2;
 
+    EditText mAmountInput;
+    Button mWithdrawButton;
+    Button mDepositButton;
+    TextView mBalanceDisplay;
+    BankAccount mCurrentAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        currentAccount = new BankAccount();
-        currentAccount2 = new BankAccount();
+        int[] array = new int[5];
+        array[0] = 200;
+        array[1] = 300;
+        array[2] = 400;
+        array[3] = 500;
+        array[4] = 600;
 
-        Log.d("MainActivity", "1 BankAccount: Overdraft Fee is " + BankAccount.overdraftFee);
-        Log.d("MainActivity", "1 CurrentAccount1: Overdraft Fee is " + currentAccount.overdraftFee);
-        Log.d("MainActivity", "1 CurrentAccount1: Overdraft Fee is " + currentAccount2.overdraftFee);
+        Log.d(TAG, "Array is "+array[0]);
+        Log.d(TAG, "Array is "+array[1]);
+        Log.d(TAG, "Array is "+array[2]);
+        Log.d(TAG, "Array is "+array[3]);
+        Log.d(TAG, "Array is "+array[4]);
+        Log.d(TAG, "Array is "+array[0-4]);
 
-        BankAccount.overdraftFee = 45;
-        Log.d("MainActivity", "2 BankAccount: Overdraft Fee is " + BankAccount.overdraftFee);
-        Log.d("MainActivity", "2 CurrentAccount1: Overdraft Fee is " + currentAccount.overdraftFee);
-        Log.d("MainActivity", "2 CurrentAccount1: Overdraft Fee is " + currentAccount2.overdraftFee);
+        mCurrentAccount = new BankAccount();
 
-        currentAccount.overdraftFee = 60;
-        Log.d("MainActivity", "3 BankAccount: Overdraft Fee is " + BankAccount.overdraftFee);
-        Log.d("MainActivity", "3 CurrentAccount1: Overdraft Fee is " + currentAccount.overdraftFee);
-        Log.d("MainActivity", "3 CurrentAccount1: Overdraft Fee is " + currentAccount2.overdraftFee);
+        mAmountInput = (EditText)(findViewById(R.id.amount_input));
+        mWithdrawButton = (Button)(findViewById(R.id.withdraw_button));
+        mDepositButton = (Button)(findViewById(R.id.deposit_button));
+        mBalanceDisplay = (TextView)(findViewById(R.id.balance_display));
 
-        amountInput = (EditText)(findViewById(R.id.amount_input));
-        withdrawButton = (Button)(findViewById(R.id.withdraw_button));
-        depositButton = (Button)(findViewById(R.id.deposit_button));
-        balanceDisplay = (TextView)(findViewById(R.id.balance_display));
-
-        withdrawButton.setOnClickListener(new View.OnClickListener() {
+        mWithdrawButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String amount = amountInput.getText().toString();
-                currentAccount.withdraw(Double.parseDouble(amount));
-                balanceDisplay.setText("Balance is " + currentAccount.getBalance());
+                String amount = mAmountInput.getText().toString();
+                mCurrentAccount.withdraw(Double.parseDouble(amount));
+                mBalanceDisplay.setText("Balance is " + mCurrentAccount.getBalance());
             }
         });
 
-        depositButton.setOnClickListener(new View.OnClickListener() {
+        mDepositButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String amount = amountInput.getText().toString();
-                currentAccount.deposit(Double.parseDouble(amount));
-                balanceDisplay.setText("Balance is " + currentAccount.getBalance());
+                String amount = mAmountInput.getText().toString();
+                mCurrentAccount.deposit(Double.parseDouble(amount));
+                mBalanceDisplay.setText("Balance is " + mCurrentAccount.getBalance());
             }
         });
     }

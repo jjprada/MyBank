@@ -2,6 +2,7 @@ package com.jjprada.mybank;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,11 +13,14 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
+    private static final String TAG = "MainActivity";
     EditText amountInput;
     Button withdrawButton;
     Button depositButton;
     TextView balanceDisplay;
     BankAccount currentAccount;
+    BankAccount currentAccount2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,21 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         currentAccount = new BankAccount();
+        currentAccount2 = new BankAccount();
+
+        Log.d("MainActivity", "1 BankAccount: Overdraft Fee is " + BankAccount.overdraftFee);
+        Log.d("MainActivity", "1 CurrentAccount1: Overdraft Fee is " + currentAccount.overdraftFee);
+        Log.d("MainActivity", "1 CurrentAccount1: Overdraft Fee is " + currentAccount2.overdraftFee);
+
+        BankAccount.overdraftFee = 45;
+        Log.d("MainActivity", "2 BankAccount: Overdraft Fee is " + BankAccount.overdraftFee);
+        Log.d("MainActivity", "2 CurrentAccount1: Overdraft Fee is " + currentAccount.overdraftFee);
+        Log.d("MainActivity", "2 CurrentAccount1: Overdraft Fee is " + currentAccount2.overdraftFee);
+
+        currentAccount.overdraftFee = 60;
+        Log.d("MainActivity", "3 BankAccount: Overdraft Fee is " + BankAccount.overdraftFee);
+        Log.d("MainActivity", "3 CurrentAccount1: Overdraft Fee is " + currentAccount.overdraftFee);
+        Log.d("MainActivity", "3 CurrentAccount1: Overdraft Fee is " + currentAccount2.overdraftFee);
 
         amountInput = (EditText)(findViewById(R.id.amount_input));
         withdrawButton = (Button)(findViewById(R.id.withdraw_button));

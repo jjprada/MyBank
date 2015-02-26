@@ -43,7 +43,7 @@ public class MainActivity extends ActionBarActivity {
             Log.d(TAG, "Position " + i + " is " + arrayList.get(i));
         }
 
-        mCurrentAccount = new BankAccount();
+        mCurrentAccount = new BankAccount(BankAccount.Type.SAVINGS);
 
         mAmountInput = (EditText)(findViewById(R.id.amount_input));
         mWithdrawButton = (Button)(findViewById(R.id.withdraw_button));

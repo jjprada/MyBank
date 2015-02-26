@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends ActionBarActivity {
-
     private static final String TAG = "MainActivity";
 
     EditText mAmountInput;
@@ -28,22 +27,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<String> arrayList = new ArrayList<String>();
-        arrayList.add("Hello");
-        arrayList.add("World");
-
-        Log.d(TAG, "Position 0 is " + arrayList.get(0));
-        Log.d(TAG, "Size is " + arrayList.size());
-
-        for (int i = 0; i < 3; i++){
-            Log.d(TAG, "i is " + i);
-        }
-
-        for (int i = 0; i < arrayList.size(); i++){
-            Log.d(TAG, "Position " + i + " is " + arrayList.get(i));
-        }
-
-        mCurrentAccount = new BankAccount(BankAccount.Type.SAVINGS);
+        mCurrentAccount = new SavingsAccount();
 
         mAmountInput = (EditText)(findViewById(R.id.amount_input));
         mWithdrawButton = (Button)(findViewById(R.id.withdraw_button));

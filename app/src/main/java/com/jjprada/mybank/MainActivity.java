@@ -2,7 +2,6 @@ package com.jjprada.mybank;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,7 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.jjprada.accounts.BankAccount;
+import com.jjprada.accounts.SavingsAccount;
 
 
 public class MainActivity extends ActionBarActivity {

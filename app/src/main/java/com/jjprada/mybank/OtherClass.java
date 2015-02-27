@@ -7,5 +7,5 @@ import com.jjprada.accounts.BankAccount;
  */
 public class OtherClass extends BankAccount {
 
-    
+
 }
